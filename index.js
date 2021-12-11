@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const { PORT } = require('./configs/constants');
+const { PORT } = require('./config/constants');
 
 const app = express();
 const cron = require('node-cron');
@@ -13,7 +13,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/crypto', coinCapRouter);
-
 
 // this function is scheduled to run every minute...
 cron.schedule('* * * * *', () => {
