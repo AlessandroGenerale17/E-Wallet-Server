@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 const { Router } = require('express');
-const { CRYPTO_API } = require('../configs/constants');
+const { CRYPTO_API } = require('../config/constants');
 const router = new Router();
 
 router.route('/').get(async (req, res, next) => {
@@ -16,7 +16,7 @@ router.route('/:crypto').get(async (req, res, next) => {
 	try {
 		// name of crypto asset
 		const cryptoName = req.params.crypto;
-        // request URL using coinCapApi
+		// request URL using coinCapApi
 		const requestUrl = `${CRYPTO_API}/${cryptoName}`;
 		console.log(requestUrl);
 		const response = await axios.get(requestUrl);
