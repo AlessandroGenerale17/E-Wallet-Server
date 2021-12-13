@@ -5,6 +5,7 @@ const { PORT } = require('./config/constants');
 
 const app = express();
 const cron = require('node-cron');
+require('dotenv').config();
 
 const coinCapRouter = require('./routes/coinCapRoute');
 const rateRouter = require('./routes/rates');
