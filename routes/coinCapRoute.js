@@ -17,8 +17,7 @@ router.route('/:crypto').get(async (req, res, next) => {
         // name of crypto asset
         const cryptoName = req.params.crypto;
         // request URL using coinCapApi
-        const requestUrl = `${CRYPTO_API}/assets/${cryptoName}`;
-        const response = await axios.get(requestUrl);
+        const response = await axios.get(`${CRYPTO_API}/assets/${cryptoName}`);
         res.status(200).send(response.data);
     } catch (err) {
         next(err);
