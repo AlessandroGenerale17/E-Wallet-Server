@@ -26,8 +26,8 @@ app.use('/rate', rateRouter);
 app.use('/stock', stockRouter);
 
 // this function is scheduled to run every minute...
-cron.schedule('* * * * *', () => {
-    console.log('running a task every minute');
-});
+// cron.schedule('* * * * *', () => {
+//     console.log('running a task every minute');
+// });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}...`));
