@@ -5,8 +5,8 @@ const router = new Router();
 
 router.route('/').get(async (req, res, next) => {
     try {
-        // for now sanity check
-        res.status(200).send('OK');
+        const response = await axios.get(`${CRYPTO_API}/assets/`);
+        res.status(200).send(response.data);
     } catch (err) {
         next(err);
     }
