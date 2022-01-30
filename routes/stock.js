@@ -10,7 +10,6 @@ const router = new Router();
 router.route('/suggestions/:searchTerm').get(async (req, res, next) => {
     try {
         const searchTerm = req.params.searchTerm.trim();
-        console.log('search term ', searchTerm);
         if (!searchTerm.length)
             return res.status(400).send({
                 error: 'Invalid search term',
@@ -24,7 +23,13 @@ router.route('/suggestions/:searchTerm').get(async (req, res, next) => {
                 error: 'Invalid search term',
                 description: `Cannot find corresponding stocks with the provided: ${searchTerm}`
             });
-        return res.status(200).send(response.data.bestMatches);
+        // format the response
+        const suggestions = response.data.bestMatches.map((suggestion) => ({
+            id: suggestion['1. symbol'],
+            name: suggestion['2. name'],
+            type: suggestion['3. type']
+        }));
+        return res.status(200).send(suggestions);
     } catch (err) {
         next(err);
     }
