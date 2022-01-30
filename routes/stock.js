@@ -25,7 +25,7 @@ router.route('/suggestions/:searchTerm').get(async (req, res, next) => {
             });
         // format the response
         const suggestions = response.data.bestMatches.map((suggestion) => ({
-            id: suggestion['1. symbol'],
+            symbol: suggestion['1. symbol'],
             name: suggestion['2. name'],
             type: suggestion['3. type']
         }));
